@@ -55,7 +55,7 @@ const LoginScreen: FC = () => {
               mt={22}
               width="100%"
               backgroundColor="$primary"
-              borderColor="$lighterGrey4"
+              borderColor="$lighterGrey6"
               borderWidth={1}
               buttonStyle={{ paddingVertical: 16 }}
               textProps={{
