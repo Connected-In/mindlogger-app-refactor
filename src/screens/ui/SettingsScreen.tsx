@@ -12,8 +12,11 @@ import {
   colors,
   getStringHashCode,
   useAppSelector,
+  ENV,
 } from '@shared/lib';
 import { YStack, Box, RowButton, UserIcon, Text } from '@shared/ui';
+
+const isProduction = !ENV;
 
 const SettingsScreen: FC = () => {
   const { navigate } = useNavigation();
@@ -32,6 +35,10 @@ const SettingsScreen: FC = () => {
 
   const navigateToAppLogs = () => {
     navigate('ApplicationLogs');
+  };
+
+  const navigateToNetwork = () => {
+    navigate('NetworkScreen');
   };
 
   const hashedDeviceId: string = useMemo(() => {
@@ -77,6 +84,14 @@ const SettingsScreen: FC = () => {
             accessibilityLabel="upload_logs-button"
             title={t('settings:upload_logs')}
           />
+
+          {!isProduction && (
+            <RowButton
+              onPress={navigateToNetwork}
+              accessibilityLabel="network-button"
+              title="Network"
+            />
+          )}
 
           <LogoutRowButton />
         </YStack>

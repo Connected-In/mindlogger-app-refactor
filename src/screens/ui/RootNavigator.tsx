@@ -43,6 +43,7 @@ import {
   CloseIcon,
 } from '@shared/ui';
 
+import NetworkScreen from './NetworkScreen';
 import { getScreenOptions, RootStackParamList } from '../config';
 import { onBeforeAppClose } from '../lib';
 import { useDefaultRoute, useInitialRouteNavigation } from '../model';
@@ -311,6 +312,14 @@ export default () => {
             },
           }}
           component={AboutScreen}
+        />
+
+        <Stack.Screen
+          name="NetworkScreen"
+          options={{
+            title: 'Network',
+          }}
+          component={NetworkScreen}
         />
       </Stack.Group>
     </Stack.Navigator>
