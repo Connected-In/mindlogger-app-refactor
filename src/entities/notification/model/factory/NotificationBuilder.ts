@@ -24,7 +24,7 @@ import {
   ScheduleEvent,
 } from '../../lib/types';
 
-const NumberOfDaysForSchedule = 14;
+export const NumberOfDaysForSchedule = 14;
 
 interface INotificationBuilder {
   build: () => AppletNotificationDescribers;
@@ -209,8 +209,6 @@ class NotificationBuilder implements INotificationBuilder {
       reminderSetting,
     );
 
-    const aWeekAgoDay = addDays(this.utility.currentDay, -7);
-
     const isPeriodicitySet =
       periodicity === PeriodicityType.Daily ||
       periodicity === PeriodicityType.Weekly ||
@@ -219,7 +217,7 @@ class NotificationBuilder implements INotificationBuilder {
 
     const isOnceEvent = periodicity === PeriodicityType.Once;
 
-    if (isOnceEvent && scheduledDay < aWeekAgoDay) {
+    if (isOnceEvent && scheduledDay < this.utility.aWeekAgoDay) {
       return eventResult;
     }
     if (
@@ -259,7 +257,6 @@ class NotificationBuilder implements INotificationBuilder {
         eventDayFrom,
         eventDayTo,
         periodicity,
-        aWeekAgoDay,
         scheduledDay,
       );
 
@@ -268,7 +265,6 @@ class NotificationBuilder implements INotificationBuilder {
         eventDayFrom,
         eventDayTo,
         periodicity,
-        aWeekAgoDay,
         scheduledDay,
       );
 

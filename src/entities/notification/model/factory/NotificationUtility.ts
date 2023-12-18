@@ -84,6 +84,10 @@ export class NotificationUtility {
     return startOfDay(this.now);
   }
 
+  public get aWeekAgoDay() {
+    return addDays(this.currentDay, -7);
+  }
+
   public get weekDays(): Date[] {
     if (this._weekDays) {
       return this._weekDays;
