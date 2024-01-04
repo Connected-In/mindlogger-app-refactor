@@ -46,9 +46,7 @@ function NotificationsLogger() {
     const request: NotificationLogsRequest = {
       actionType: `${payload.trigger} -> ${payload.action}`,
       userId: email!,
-      deviceId: !deviceId
-        ? 'undefined'
-        : getStringHashCode(deviceId).toString(),
+      deviceId: !deviceId ? '12345678' : getStringHashCode(deviceId).toString(),
       notificationDescriptions,
       notificationInQueue,
       scheduledNotifications,

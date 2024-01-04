@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 
 import { UploadRetryBanner } from '@app/entities/activity';
 import { IdentityModel } from '@app/entities/identity';
+import NotificationsLogger from '@app/entities/notification/lib/services/NotificationsLogger';
+import { NotificationManager } from '@app/entities/notification/model';
+import { LogAction, LogTrigger } from '@app/shared/api';
 import { LogoutRowButton } from '@features/logout';
 import {
   SystemRecord,
@@ -43,6 +46,17 @@ const SettingsScreen: FC = () => {
     return hashed;
   }, []);
 
+  const topUpNotifications = async () => {
+    await NotificationManager.topUpNotificationsFromQueue();
+
+    NotificationsLogger.log({
+      trigger: LogTrigger.RunBackgroundProcess,
+      action: LogAction.ReStack,
+    });
+
+    console.log('topup done');
+  };
+
   return (
     <Box flex={1} bg="$secondary">
       <StatusBar />
@@ -76,6 +90,12 @@ const SettingsScreen: FC = () => {
             onPress={navigateToAppLogs}
             accessibilityLabel="upload_logs-button"
             title={t('settings:upload_logs')}
+          />
+
+          <RowButton
+            onPress={topUpNotifications}
+            accessibilityLabel="upload_logs-button"
+            title={t('top-up n-s')}
           />
 
           <LogoutRowButton />
