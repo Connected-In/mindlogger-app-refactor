@@ -5,6 +5,7 @@ import { zodI18nMap } from 'zod-i18n-map';
 
 import en from '@assets/translations/en.json';
 import fr from '@assets/translations/fr.json';
+import ko from '@assets/translations/ko.json';
 
 import LocalizationStorage from './LocalizationStorage';
 
@@ -17,15 +18,16 @@ declare module 'i18next' {
 z.setErrorMap(zodI18nMap);
 
 function setupLocalization() {
-  const language = LocalizationStorage.getLanguage() ?? 'en';
+  const language = LocalizationStorage.getLanguage() ?? 'ko';
 
   return i18n.use(initReactI18next).init({
     compatibilityJSON: 'v3',
     lng: language,
-    fallbackLng: 'en',
+    fallbackLng: 'ko',
     resources: {
       en,
       fr,
+      ko,
     },
     returnNull: false,
   });

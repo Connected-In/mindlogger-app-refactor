@@ -207,7 +207,8 @@
     "app_language": "Application language",
     "change_app_language": "Change Language",
     "en": "English",
-    "fr": "Français"
+    "fr": "Français",
+    "ko": "Korean"
   },
   "application_logs_screen": {
     "upload_button": "Upload logs",
