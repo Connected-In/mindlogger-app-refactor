@@ -3,11 +3,15 @@ import { FC } from 'react';
 
 import { FormProvider } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useToast } from 'react-native-toast-notifications';
 
 import { usePasswordRecoveryMutation } from '@app/entities/identity';
-import { executeIfOnline, useAppForm, useFormChanges } from '@shared/lib';
-import { YStack, Box, BoxProps, SubmitButton } from '@shared/ui';
+import {
+  executeIfOnline,
+  useAppForm,
+  useBanner,
+  useFormChanges,
+} from '@shared/lib';
+import { Text, YStack, Box, BoxProps, SubmitButton } from '@shared/ui';
 import { ErrorMessage, InputField } from '@shared/ui/form';
 
 import { ForgotPasswordFormSchema } from '../model';
@@ -18,7 +22,16 @@ type Props = BoxProps & {
 
 const ForgotPasswordForm: FC<Props> = props => {
   const { t } = useTranslation();
-  const toast = useToast();
+  const banner = useBanner();
+
+  const { form, submit } = useAppForm(ForgotPasswordFormSchema, {
+    defaultValues: {
+      email: '',
+    },
+    onSubmitSuccess: data => {
+      executeIfOnline(() => recover({ email: data.email }));
+    },
+  });
 
   const {
     mutate: recover,
@@ -28,16 +41,29 @@ const ForgotPasswordForm: FC<Props> = props => {
   } = usePasswordRecoveryMutation({
     onSuccess: () => {
       props.onRecoverySuccess();
-      toast.show(t('forgot_pass_form:email_sent'));
+      banner.show(
+        <Text>
+          <Text fontSize={14}>
+            {t('forgot_pass_form:email_sent_1')}
+            {'\n'}
+          </Text>
+          <Text fontSize={14} fontWeight="800">
+            {form.getValues().email}
+            {'\n'}
+          </Text>
+          <Text fontSize={14}>{t('forgot_pass_form:email_sent_2')}</Text>
+        </Text>,
+        {
+          type: 'success',
+          duration: 5000,
+        },
+      );
     },
-  });
-
-  const { form, submit } = useAppForm(ForgotPasswordFormSchema, {
-    defaultValues: {
-      email: '',
-    },
-    onSubmitSuccess: data => {
-      executeIfOnline(() => recover({ email: data.email }));
+    onError: () => {
+      banner.show(t('forgot_pass_form:email_send_error'), {
+        type: 'danger',
+        duration: 5000,
+      });
     },
   });
 

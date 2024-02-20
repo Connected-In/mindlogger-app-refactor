@@ -17,6 +17,7 @@ import SplashProvider from './SplashProvider';
 import SystemBootUpProvider from './SystemBootUpProvider';
 import TamaguiProvider from './TamaguiProvider';
 import ToastProvider from './ToastProvider';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 CacheManager.config = {
   baseDir: `${Dirs.CacheDir}/images_cache/`,
@@ -38,29 +39,31 @@ const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <GestureHandlerRootView style={styles.gestureHandlerView}>
-      <SystemBootUpProvider onLoadingFinished={onLoadingFinished}>
-        <AnalyticsProvider>
-          <ReduxProvider>
-            <ReactQueryProvider>
-              <LocalizationProvider>
-                <TamaguiProvider>
-                  <NavigationProvider>
-                    <PortalProvider>
-                      <ToastProvider>
-                        <SplashProvider isLoading={isBootingUp}>
-                          {children}
-                        </SplashProvider>
-                      </ToastProvider>
-                    </PortalProvider>
-                  </NavigationProvider>
-                </TamaguiProvider>
-              </LocalizationProvider>
-            </ReactQueryProvider>
-          </ReduxProvider>
-        </AnalyticsProvider>
-      </SystemBootUpProvider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={styles.gestureHandlerView}>
+        <SystemBootUpProvider onLoadingFinished={onLoadingFinished}>
+          <AnalyticsProvider>
+            <ReduxProvider>
+              <ReactQueryProvider>
+                <LocalizationProvider>
+                  <TamaguiProvider>
+                    <NavigationProvider>
+                      <PortalProvider>
+                        <ToastProvider>
+                          <SplashProvider isLoading={isBootingUp}>
+                            {children}
+                          </SplashProvider>
+                        </ToastProvider>
+                      </PortalProvider>
+                    </NavigationProvider>
+                  </TamaguiProvider>
+                </LocalizationProvider>
+              </ReactQueryProvider>
+            </ReduxProvider>
+          </AnalyticsProvider>
+        </SystemBootUpProvider>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 };
 

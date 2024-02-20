@@ -1,4 +1,8 @@
 export const colors = {
+  alertSuccessBg: '#B5D5D3',
+  alertSuccess: '#0F7B6C',
+  alertErrorBg: '#FFDAD6',
+  alertError: '#BA1A1A',
   white: '#FFFFFF',
   whiteTsp: 'rgba(255, 255, 255, 0.8)',
   whiteTsp2: 'rgba(255, 255, 255, 0.6)',
