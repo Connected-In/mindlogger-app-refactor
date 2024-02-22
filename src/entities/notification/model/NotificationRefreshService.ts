@@ -214,8 +214,7 @@ const createNotificationRefreshService = (
       );
     } catch (error) {
       logger.log(
-        '[NotificationRefreshService.refresh]: Notifications rescheduling failed\n\n' +
-          error.toString(),
+        `[NotificationRefreshService.refresh]: Notifications rescheduling failed\n\n${error}`,
       );
     } finally {
       NotificationManager.mutex.release();

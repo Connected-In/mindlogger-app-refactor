@@ -524,9 +524,7 @@ export function mapAnswersToAlerts(
 
     return alerts as AnswerAlertsDto;
   } catch (error) {
-    Logger.warn(
-      '[mapAnswersToAlerts]: Error occurred: \n\n' + error.toString(),
-    );
+    Logger.warn(`[mapAnswersToAlerts]: Error occurred: \n\n${error}`);
     throw error;
   }
 }

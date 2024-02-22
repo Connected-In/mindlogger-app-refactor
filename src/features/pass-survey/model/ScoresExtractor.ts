@@ -83,8 +83,7 @@ class ScoresExtractor {
         }
       } catch (error) {
         this.logger.warn(
-          `[ScoresExtractor.extract]: Error occurred during extracting score ${logScore}\n\nInternal Error:\n\n` +
-            error.toString(),
+          `[ScoresExtractor.extract]: Error occurred during extracting score ${logScore}\n\nInternal Error:\n\n${error}`,
         );
         result.push({
           name: '[Error occurred]',

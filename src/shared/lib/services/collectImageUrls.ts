@@ -16,7 +16,7 @@ export const collectAppletRecordImageUrls = (
     return result;
   } catch (error) {
     throw new Error(
-      '[collectAppletRecordImageUrls]: Error occurred:\n\n' + error.toString(),
+      `[collectAppletRecordImageUrls]: Error occurred:\n\n${error}`,
     );
   }
 };
@@ -42,7 +42,7 @@ export const collectAppletDetailsImageUrls = (
     return result;
   } catch (error) {
     throw new Error(
-      '[collectAppletDetailsImageUrls]: Error occurred:\n\n' + error.toString(),
+      `[collectAppletDetailsImageUrls]: Error occurred:\n\n${error}`,
     );
   }
 };
@@ -116,8 +116,7 @@ export const collectActivityDetailsImageUrls = (activity: ActivityDto) => {
     return collectActivityDetailsImageUrlsInternal(activity);
   } catch (error) {
     throw new Error(
-      '[collectActivityDetailsImageUrls]: Error occurred:\n\n' +
-        error.toString(),
+      `[collectActivityDetailsImageUrls]: Error occurred:\n\n${error}`,
     );
   }
 };

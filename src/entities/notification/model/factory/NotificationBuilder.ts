@@ -343,8 +343,7 @@ class NotificationBuilder implements INotificationBuilder {
         eventNotificationsResult.push(eventNotifications);
       } catch (error: any) {
         console.error(
-          `[NotificationBuilder.build] Error occurred during process event: "${eventEntity.event.id}", entity: "${eventEntity.entity?.name}" :\n\n` +
-            error.toString(),
+          `[NotificationBuilder.build] Error occurred during process event: "${eventEntity.event.id}", entity: "${eventEntity.entity?.name}" :\n\n${error}`,
         );
       }
     }

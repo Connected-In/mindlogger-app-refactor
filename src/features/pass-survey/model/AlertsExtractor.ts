@@ -262,8 +262,7 @@ class AlertsExtractor {
       return this.extractInternal(pipelineItems, answers);
     } catch (error) {
       this.logger.warn(
-        '[AlertsExtractor.extractForSummary]: Error occurred: \n\n' +
-          error.toString(),
+        `[AlertsExtractor.extractForSummary]: Error occurred: \n\n${error}`,
       );
       return [
         {

@@ -161,10 +161,7 @@ class Logger implements ILogger {
     try {
       logFiles = await this.getLogFiles();
     } catch (error) {
-      console.warn(
-        '[Logger.getLogFiles]: Error occurred\n\n',
-        error.toString(),
-      );
+      console.warn(`[Logger.getLogFiles]: Error occurred\n\n${error}`);
       return false;
     }
 
@@ -182,10 +179,7 @@ class Logger implements ILogger {
         })),
       );
     } catch (error) {
-      console.warn(
-        '[Logger.checkIfFilesExist]: Error occurred\n\n',
-        error.toString(),
-      );
+      console.warn(`[Logger.checkIfFilesExist]: Error occurred\n\n${error}`);
       return false;
     }
 
@@ -231,8 +225,7 @@ class Logger implements ILogger {
         });
       } catch (error) {
         console.warn(
-          `[Logger.upload]: Error occurred while sending file "${checkRecord.fileName}"\n\n`,
-          error.toString(),
+          `[Logger.upload]: Error occurred while sending file "${checkRecord.fileName}"\n\n${error}`,
         );
         success = false;
       }
@@ -262,10 +255,7 @@ class Logger implements ILogger {
     try {
       await callWithMutexAsync(this.mutex, FileLogger.deleteLogFiles);
     } catch (error) {
-      console.warn(
-        'Logger.clearAllLogFiles]: Error occurred\n\n',
-        error.toString(),
-      );
+      console.warn(`Logger.clearAllLogFiles]: Error occurred\n\n${error}`);
     }
   }
 
@@ -326,10 +316,7 @@ class Logger implements ILogger {
 
       return result;
     } catch (error) {
-      console.warn(
-        '[Logger.sendInternal]: Error occurred: \n\n',
-        error.toString(),
-      );
+      console.warn(`[Logger.sendInternal]: Error occurred: \n\n${error}`);
     } finally {
       this.mutex.release();
     }
