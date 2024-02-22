@@ -185,7 +185,7 @@ export class ScoresCalculator implements IScoresCalculator {
     } catch (error) {
       throw new Error(
         '[ScoresCalculator:collectMaxScores]: Error occurred:\n\n' +
-          error!.toString(),
+          error.toString(),
       );
     }
   }
@@ -206,7 +206,7 @@ export class ScoresCalculator implements IScoresCalculator {
     } catch (error) {
       throw new Error(
         '[ScoresCalculator.calculate]: Error occurred during collecting actual scores:\n\n' +
-          error!.toString(),
+          error.toString(),
       );
     }
 

@@ -245,7 +245,7 @@ function useStartEntity({
 
       const activityFlowDtos: ActivityFlowRecordDto[] =
         detailsResponse.result.activityFlows;
-      const flow = activityFlowDtos!.find(x => x.id === flowId)!;
+      const flow = activityFlowDtos.find(x => x.id === flowId)!;
 
       return flow.activityIds;
     };

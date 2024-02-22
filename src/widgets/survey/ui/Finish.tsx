@@ -106,7 +106,7 @@ function FinishItem({
       retryUpload: processQueue,
     });
 
-  let finishReason: FinishReason = isTimerElapsed ? 'time-is-up' : 'regular';
+  const finishReason: FinishReason = isTimerElapsed ? 'time-is-up' : 'regular';
 
   async function completeActivity() {
     dispatch(

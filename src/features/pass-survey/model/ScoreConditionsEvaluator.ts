@@ -54,7 +54,7 @@ export class ScoreConditionsEvaluator implements IScoreConditionsEvaluator {
     } catch (error) {
       throw new Error(
         '[ScoreConditionsEvaluator.evaluate]: Error occurred:\n\n' +
-          error!.toString(),
+          error.toString(),
       );
     }
   }

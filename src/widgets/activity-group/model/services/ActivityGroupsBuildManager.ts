@@ -124,7 +124,7 @@ const createActivityGroupsBuildManager = (logger: ILogger) => {
 
     logger.log('[ScheduledDateCalculator.calculate]: Calculating scheduledAt');
 
-    for (let eventActivity of entityEvents) {
+    for (const eventActivity of entityEvents) {
       const date = calculator.calculate(eventActivity.event);
       eventActivity.event.scheduledAt = date;
 
@@ -147,21 +147,21 @@ const createActivityGroupsBuildManager = (logger: ILogger) => {
       logger.log(
         '[ActivityGroupsBuildManager.processInternal]: Building in-progress',
       );
-      result.groups.push(builder!.buildInProgress(entityEvents));
+      result.groups.push(builder.buildInProgress(entityEvents));
 
       logger.log(
         '[ActivityGroupsBuildManager.processInternal]: Building available',
       );
-      result.groups.push(builder!.buildAvailable(entityEvents));
+      result.groups.push(builder.buildAvailable(entityEvents));
 
       logger.log(
         '[ActivityGroupsBuildManager.processInternal]: Building scheduled',
       );
-      result.groups.push(builder!.buildScheduled(entityEvents));
+      result.groups.push(builder.buildScheduled(entityEvents));
     } catch (error) {
       logger.warn(
         '[ActivityGroupsBuildManager.processInternal]: Build error occurred:\n\n' +
-          error!.toString(),
+          error.toString(),
       );
     }
 
@@ -184,7 +184,7 @@ const createActivityGroupsBuildManager = (logger: ILogger) => {
     } catch (error) {
       logger.warn(
         '[ActivityGroupsBuildManager.process] Error occurred\nInternal error:\n' +
-          error!.toString(),
+          error.toString(),
       );
     }
     return { groups: [] };

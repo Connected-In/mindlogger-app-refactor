@@ -92,7 +92,7 @@ const AbShapes: FC<Props> = props => {
 
   const endOffset = getEndOffset();
 
-  let errorMiddlePoint: Point | null = errorPath
+  const errorMiddlePoint: Point | null = errorPath
     ? getEquidistantPoint(errorPath)
     : null;
 

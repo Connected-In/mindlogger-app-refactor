@@ -68,7 +68,7 @@ class Logger implements ILogger {
 
     const result: Array<NamePathSize> = [];
 
-    for (let path of filePaths) {
+    for (const path of filePaths) {
       const fileInfo = await FileSystem.stat(path);
       result.push({
         fileName: fileInfo.filename,
@@ -99,7 +99,7 @@ class Logger implements ILogger {
 
     const result: FileExists[] = [];
 
-    for (let existRecord of checkResult.data.result) {
+    for (const existRecord of checkResult.data.result) {
       const fileInfo = files.find(x => x.fileName === existRecord.fileId)!;
 
       result.push({
@@ -163,7 +163,7 @@ class Logger implements ILogger {
     } catch (error) {
       console.warn(
         '[Logger.getLogFiles]: Error occurred\n\n',
-        error!.toString(),
+        error.toString(),
       );
       return false;
     }
@@ -184,14 +184,14 @@ class Logger implements ILogger {
     } catch (error) {
       console.warn(
         '[Logger.checkIfFilesExist]: Error occurred\n\n',
-        error!.toString(),
+        error.toString(),
       );
       return false;
     }
 
     let success = true;
 
-    for (let checkRecord of checkResult) {
+    for (const checkRecord of checkResult) {
       if (this.isAborted) {
         return false;
       }
@@ -232,7 +232,7 @@ class Logger implements ILogger {
       } catch (error) {
         console.warn(
           `[Logger.upload]: Error occurred while sending file "${checkRecord.fileName}"\n\n`,
-          error!.toString(),
+          error.toString(),
         );
         success = false;
       }
@@ -264,7 +264,7 @@ class Logger implements ILogger {
     } catch (error) {
       console.warn(
         'Logger.clearAllLogFiles]: Error occurred\n\n',
-        error!.toString(),
+        error.toString(),
       );
     }
   }
@@ -328,7 +328,7 @@ class Logger implements ILogger {
     } catch (error) {
       console.warn(
         '[Logger.sendInternal]: Error occurred: \n\n',
-        error!.toString(),
+        error.toString(),
       );
     } finally {
       this.mutex.release();

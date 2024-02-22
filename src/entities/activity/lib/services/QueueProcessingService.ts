@@ -116,7 +116,7 @@ class QueueProcessingService {
     } catch (error) {
       this.logger.warn(
         '[QueueProcessingService.process]: Error in processInternal occurred\n\n' +
-          error!.toString(),
+          error.toString(),
       );
       this.uploadStatusObservable.isError = true;
     } finally {

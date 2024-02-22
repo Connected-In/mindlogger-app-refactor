@@ -27,7 +27,7 @@ const ActivityGroups: FC<Props> = props => {
       queryKey: getAppletCompletedEntitiesKey(props.appletId),
     }) > 0;
 
-  let { groups, isSuccess, error } = useActivityGroups(props.appletId);
+  const { groups, isSuccess, error } = useActivityGroups(props.appletId);
 
   const hasError = !isSuccess;
 

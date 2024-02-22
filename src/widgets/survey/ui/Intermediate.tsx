@@ -83,7 +83,7 @@ function Intermediate({
   // TODO: The usage of useAppletDetailsQuery here should be removed in the future
   // because we should rely on the flow pipeline instead.
   // https://github.com/ChildMindInstitute/mindlogger-app-refactor/pull/172#discussion_r1178961244
-  let { data: activityFlow } = useAppletDetailsQuery(appletId, {
+  const { data: activityFlow } = useAppletDetailsQuery(appletId, {
     select: response =>
       mapActivityFlowFromDto(
         response.data.result.activityFlows.find(o => o.id === flowId)!,
@@ -92,7 +92,7 @@ function Intermediate({
 
   const flowName = activityFlow?.name;
 
-  let { data: allActivities } = useAppletDetailsQuery(appletId, {
+  const { data: allActivities } = useAppletDetailsQuery(appletId, {
     select: r => mapActivitiesFromDto(r.data.result.activities),
   });
 
