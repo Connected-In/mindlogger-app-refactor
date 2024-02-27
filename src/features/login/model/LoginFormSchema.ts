@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const schema = z.object({
-  email: z.string().email(),
+  email: z.string().min(1, 'form_item:required').email('login:invalid_email'),
   password: z
     .string()
     .min(1, 'form_item:required')

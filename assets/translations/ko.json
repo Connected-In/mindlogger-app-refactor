@@ -178,6 +178,7 @@
     "forgot_password": "비밀번호 찾기",
     "what_is": "무엇인가요",
     "login_error": "로그인 실패.",
+    "invalid_email": "유효하지 않은 이메일 주소",
     "password_at_least_characters": "비밀번호는 최소 6글자여야 합니다"
   },
   "login_form": {
